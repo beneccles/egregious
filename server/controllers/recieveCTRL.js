@@ -1,43 +1,44 @@
 const searchResults = []
-let index = 0;
+let index = 1;
 const axios = require('axios')
 
 module.exports = {
     getResults: (req, res) => {
 
-        axios.get(`https://api.rawg.io/api/games?page_size=10&${req.param.search}`).then(result => {
-            for (let i = 0; i < 10; i++){
-                const favoriteObj = {
-                    id: index++,
-                    slug: req.body.results[i].slug,
-                    title: req.body.results[i].name,
-                    date: req.body.results[i].released,
-                    studio: req.body.results[i].developers,
-                    platforms: req.body.results[i].platforms,
-                    background_image: req.body.results[i].background_image,
-                    genres: req.body.results[i].genres,
-                    tags: req.body.results[i].tags,
-                    clips: req.body.results[i].clip,
-                    short_screenshots: req.body.results[i].short_screenshoots, 
-                    description: req.body.description_raw,
-                    esrb: req.body.esrb_rating.name
+        const {search} = req.params;
         
-                }
+        axios.get(`https://api.rawg.io/api/games?page_size=10&search=${req.params.search}`).then(result => {
+            const searchObj = {
+                id: index++,
+                slug: result.data.results[0].slug, //Correct Syntax Confirmed
+                title: result.data.results[0].name, //Correct Syntax Confirmed
+                date: result.data.results[0].released, //Confirmed
+                studio: result.data.results[0].developers, //Confirmed
+                platforms: result.data.results[0].platforms,//Confirmed
+                backgroundImage: result.data.results[0].background_image, //Confirmed
+                genres: result.data.results[0].genres,
+                tags: result.data.results[0].tags,
+                clips: result.data.results[0].clip,
+                shortScreenshots: result.data.results[0].short_screenshoots, 
+                description: "",
+                esrb: result.data.results[0].esrb_rating
+    
+            }
 
-                axios.get(`https://api.rawg.io/api/games/${favoriteObj.slug}`).then(result2 => {
-                    favoriteObj.description = result2.data.description_raw
-                })
+            axios.get(`https://api.rawg.io/api/games/${searchObj.slug}`).then(reggie => {
+                searchObj["description"] = reggie.data.description;
+                searchResults.push(searchObj)
+                res.status(200).send(searchResults);
+            })    
 
-                searchResults.push(results.data.results[i])
-            };
-
-            res.status(200).send(searchResults);
-
-        });
+        })
+        console.log(searchResults.length)
     },
     deleteResults: (req,res) => {
+        console.log(searchResults);
         searchResults.splice(0,searchResults.length);
         res.status(200).send(searchResults);
-    }
+    },
+    searchResults
 
 }

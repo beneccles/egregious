@@ -12,15 +12,15 @@ app.use(express.json())
 /***SERVER ENDPOINTS***/
 //recieveCTRL
 // GET to recieveCTRL.recieveSearchResult
-app.get('/api/games?page_size=10&', recieveCtrl.getResults)
+app.get('/api/games/:search', recieveCtrl.getResults)
 // DELETE to recieveCTRL.removeResults
-app.delete('/api/games?page_size=10&', recieveCtrl.deleteResults)
+app.delete('/api/games', recieveCtrl.deleteResults)
 
 //gameCTRL.js
 // GET to gameCTRL.getFavorites
 
 // POST to gameCTRL.addToFavorites
-
+//app.post('/api/games/:id', gameCtrl.add)
 // PUT to gameCTRL.updateName
 
 // DELETE to gameCTRL.removeFavorite
@@ -28,7 +28,7 @@ app.delete('/api/games?page_size=10&', recieveCtrl.deleteResults)
 
 //recommendCTRL.js
 // GET to recommendCTRL.recieveRecommendations
-
+app.get('/api/games/recommend/:name', recommendCtrl.getRecommend)
 // DELETE to recommendCTRL.removeRecommendations
 
 
