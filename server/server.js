@@ -10,6 +10,12 @@ const recommendCtrl = require('./controllers/recommendCTRL')
 app.use(express.json())
 
 /***SERVER ENDPOINTS***/
+//recieveCTRL
+// GET to recieveCTRL.recieveSearchResult
+app.get('/api/games?page_size=10&', recieveCtrl.getResults)
+// DELETE to recieveCTRL.removeResults
+app.delete('/api/games?page_size=10&', recieveCtrl.deleteResults)
+
 //gameCTRL.js
 // GET to gameCTRL.getFavorites
 
@@ -26,10 +32,7 @@ app.use(express.json())
 // DELETE to recommendCTRL.removeRecommendations
 
 
-//recieveCTRL
-// GET to recieveCTRL.recieveSearchResult
 
-// DELETE to recieveCTRL.removeResults
 
 
 // Listen up, for those sweet, sweet axios calls.

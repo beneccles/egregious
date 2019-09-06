@@ -7,7 +7,7 @@ module.exports = {
         // Get id, title, release date, studio, platforms, background_image,
         // genres, short_screenshots, clip(maybe), and short_Description, then store in object
         const favoriteObj = {
-            index: index++
+            index: index++,
             id: req.body.id,
             title: req.body.name,
             date: req.body.released,
