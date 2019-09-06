@@ -31,7 +31,9 @@ module.exports = {
         })
     },
     deleteRecommend: (req, res) => {
-        recommendResults.splice(0, recommendResults.length)
+        let {deleteIndex} = req.param;
+
+        recommendResults.splice(deleteIndex, recommendResults.length)
         res.status(200).send(recommendResults);
     }
 }

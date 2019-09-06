@@ -30,6 +30,7 @@ app.delete('/api/games', recieveCtrl.deleteResults)
 // GET to recommendCTRL.recieveRecommendations
 app.get('/api/games/recommend/:name', recommendCtrl.getRecommend)
 // DELETE to recommendCTRL.removeRecommendations
+app.delete('/api/games/recommend/:deleteIndex', recommendCtrl.deleteRecommend)
 
 
 
