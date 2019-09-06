@@ -29,5 +29,9 @@ module.exports = {
                 res.status(200).send(recommendResults);
             })    
         })
+    },
+    deleteRecommend: (req, res) => {
+        recommendResults.splice(0, recommendResults.length)
+        res.status(200).send(recommendResults);
     }
 }
