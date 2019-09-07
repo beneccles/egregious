@@ -48,6 +48,7 @@ module.exports = {
 
 
         })
+
         // Send out searchData when the endpoint is called.
         res.status(200).send(searchData);
     },
