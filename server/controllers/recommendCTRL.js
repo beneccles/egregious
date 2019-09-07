@@ -3,35 +3,46 @@ let index = 0;
 const axios = require('axios');
 
 module.exports = {
-    getRecommend: (req, res) => {
-        const {name} = req.params;
+    getRecommend: async (req, res) => {
+        const { name } = req.params;
+        let retArray = []
 
-        axios.get(`https://api.rawg.io/api/games/${name}/suggested?page_size=5`).then(result => {
-            const recommendObj = {
-                id: index++,
-                slug: result.data.results[0].slug, //Correct Syntax Confirmed
-                title: result.data.results[0].name, //Correct Syntax Confirmed
-                date: result.data.results[0].released, //Confirmed
-                studio: result.data.results[0].developers, //Confirmed
-                platforms: result.data.results[0].platforms,//Confirmed
-                backgroundImage: result.data.results[0].background_image, //Confirmed
-                genres: result.data.results[0].genres,
-                tags: result.data.results[0].tags,
-                clips: result.data.results[0].clip,
-                shortScreenshots: result.data.results[0].short_screenshoots, 
-                description: "",
-                esrb: result.data.results[0].esrb_rating
+        let searchData = await axios.get(`https://api.rawg.io/api/games/${name}/suggested?page_size=5`).then(async result => {
+            const { results } = result.data
+
+            for (let i = 0; i < results.length; i++) {
+                const recommendObj = {
+                    id: index++,
+                    slug:               results[i].slug, 
+                    title:              results[i].name, 
+                    date:               results[i].released, 
+                    studio:             results[i].developers, 
+                    platforms:          results[i].platforms,
+                    backgroundImage:    results[i].background_image, 
+                    genres:             results[i].genres,
+                    tags:               results[i].tags,
+                    clips:              results[i].clip,
+                    shortScreenshots:   results[i].short_screenshoots,
+                    description: "",    // Placeholder for data from second API call
+                    esrb:               results[i].esrb_rating
+                }
+
+                await axios.get(`https://api.rawg.io/api/games/${recommendObj.slug}`).then(reggie => {
+                    recommendObj["description"] = reggie.data.description;
+
+                })
+
+                retArray.push(recommendObj)
+
             }
+            return retArray;
 
-            axios.get(`https://api.rawg.io/api/games/${recommendObj.slug}/suggested?page_size=5`).then(reggie => {
-                recommendObj["description"] = reggie.data.description;
-                recommendResults.push(recommendObj)
-                res.status(200).send(recommendResults);
-            })    
+
         })
+        res.status(200).send(searchData);
     },
     deleteRecommend: (req, res) => {
-        let {deleteIndex} = req.param;
+        let { deleteIndex } = req.param;
 
         recommendResults.splice(deleteIndex, recommendResults.length)
         res.status(200).send(recommendResults);
