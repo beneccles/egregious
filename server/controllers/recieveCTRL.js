@@ -56,6 +56,9 @@ module.exports = {
         searchResults.splice(0, searchResults.length);
         res.status(200).send(searchResults);
     },
+    returnResults: () => {
+        return searchResults;
+    }
     
 
 }

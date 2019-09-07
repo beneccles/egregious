@@ -18,12 +18,13 @@ app.delete('/api/games', recieveCtrl.deleteResults)
 
 //gameCTRL.js
 // GET to gameCTRL.getFavorites
-
+app.get('/api/games/favorite', gameCtrl.send)
 // POST to gameCTRL.addToFavorites
-//app.post('/api/games/:id', gameCtrl.add)
+app.post('/api/games/favorite/:id', gameCtrl.add)
 // PUT to gameCTRL.updateName
-
+app.put('/api/games/favorite/:name', gameCtrl.rename)
 // DELETE to gameCTRL.removeFavorite
+app.delete('/api/games/favorite/delete', gameCtrl.remove)
 
 
 //recommendCTRL.js
