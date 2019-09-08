@@ -7,8 +7,8 @@ class Name extends Component {
 
     render() {
         return (
-            <div className="name">
-
+            <div key={this.props.index} className="name">
+                <h1 className="title">{this.props.title}</h1>
             </div>
         )
     }

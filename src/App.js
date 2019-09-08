@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Gamebox from './components/gamebox';
 import Search from './components/search';
@@ -9,32 +9,29 @@ class App extends Component {
     super()
     this.state = {
       searchResults: [],
-      newSearch: ""
+      newSearch: "",
     }
-
+    
     this.searchResults = this.searchResults.bind(this);
   }
 
   // Call the Server, and ask it to call RAWG for the data
   searchResults(search) {
-    let newResults = axios.get(`/api/games/${search}`).then(res => {
-      this.setState({searchResults: res.data})
+    axios.get(`/api/games/${search}`).then(res => {
+      this.setState({ searchResults: res.data })
     })
-
-    
-    return newResults
   }
 
 
-  render(){
-  return (
-    <div className="App">
-      <Search searchResults={this.searchResults}/>
-      <Gamebox displayArr={this.state.searchResults} />
-      {/* {this.searchResults('Control')}; */}
-    </div>
-  )
+  render() {
+    return (
+      <div className="App">
+        <Search searchResults={this.searchResults} />
+        <Gamebox displayArr={this.state.searchResults} />
+        {/* {this.searchResults('Control')}; */}
+      </div>
+    )
   }
+
 }
-
 export default App;

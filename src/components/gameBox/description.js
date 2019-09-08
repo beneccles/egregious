@@ -8,7 +8,8 @@ class Description extends Component {
     render() {
         return (
             <div className="description">
-
+                {/* Description comes with HTML tags from the API */}
+                {this.props.description}
             </div>
         )
     }

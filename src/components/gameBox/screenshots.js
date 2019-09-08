@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Screenshot extends Component {
+class Screenshots extends Component {
     constructor(props) {
         super(props)
     }
@@ -8,10 +8,10 @@ class Screenshot extends Component {
     render() {
         return (
             <div className="screenshot">
-
+                <h1>SCREENSHOTS</h1>
             </div>
         )
     }
 }
 
-export default Screenshot;
+export default Screenshots;
