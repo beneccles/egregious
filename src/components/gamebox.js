@@ -18,7 +18,16 @@ class Gamebox extends Component {
 
     displaySearchResults(results) {
         // For each game, access the information
-        return results.map((game, index) => <Name index={index + game.title} title={game.title} />)
+        return results.map((game, index) => {
+            console.log(game);
+        return (
+        <div className="gamebox">
+        <Name index={index + game.title} title={game.title} />
+        <Studio index={index + game.studio} studio={game.studio} />
+        <Date index={index + game.date} date={game.date} />
+        <Platform index={index + game.platforms} platforms={game.platforms} />
+
+        </div>)})
     }
 
     rendDisplay() {

@@ -8,7 +8,7 @@ class Studio extends Component {
     render() {
         return (
             <div className="studio">
-                <h1>STUDIO</h1>
+                <h1>Studio: {this.props.studio}</h1>
             </div>
         )
     }
