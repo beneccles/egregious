@@ -12,7 +12,6 @@ class Search extends Component {
 
     handleChange(e) {
         this.setState({ newSearch: e })
-        console.log(this.state.newSearch)
     }
 
     // Search for Game

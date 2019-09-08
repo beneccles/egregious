@@ -5,22 +5,13 @@ class Platform extends Component {
         super(props)
     }
 
-    renderPlats(){
-        let newArr = [];
-        // Platforms comes to us as an array of objects, but we only need to grab the name property
-        // from each item in the array. Lets run through the array using a for loop.
-        for (let i = 0; i < this.props.platforms.length; i++){
-            newArr.push(<li> {this.props.platforms[i].platform.name} </li>)
-        }
-        return newArr;
-    }
-    
     render() {
+        const platforms = this.props.platforms.map((platform, index) => <h1 key={index + platform.name}>{platform.name}</h1>)
+
         return (
-            <div className="platform">
-                <list>
-                    {this.renderPlats()}
-                </list>
+            // <list key={this.props.index} className="platform">
+            <div>
+               {platforms}
             </div>
         )
     }

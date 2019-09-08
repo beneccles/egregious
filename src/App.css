@@ -24,19 +24,20 @@
 }
 
 /* Game Box CSS */
-.gameBox .display {
-  height: 10vh;
-  width: 100vw;
+.gamebox {
+  height: 20vh;
+  width: 50vw;
+  border: solid 1px black;
+  margin-bottom: 10px;
 }
 
-.name {
-  height: 10vh;
-  width: 100vw;
-}
-
-.title {
-  height: 10vh;
-  width: 100vw;
+.left {
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
+	align-content: stretch;
 }
 
 @keyframes App-logo-spin {

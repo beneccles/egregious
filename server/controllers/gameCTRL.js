@@ -1,35 +1,38 @@
 const collections = [];
-const newFavoriteList = ["New Favorites"];
+const favoriteList = [];
 const recieveCtrl = require("./recieveCTRL")
 
 module.exports = {
     add: (req, res) => {
-        let {favoriteObj} = req.body;
-        newFavoriteList.push(req.body);
-        res.status(200).send(newFavoriteList);
+        // POST DATA
+        favoriteList.push(req.body);
+        res.status(200).send(favoriteList);
     },
     rename: (req, res) => {
         //Rename favorites list
+        // PUT DATA
         const { id } = req.params
         const { newName } = req.body
-        const index = newFavoriteList.findIndex(el => el.id === +id)
-        const oldName = newFavoriteList[index].shift()
+        const index = favoriteList.findIndex(el => el.id === +id)
+        const oldName = favoriteList[index].shift()
 
         if (newName) {
-            newFavoriteList[index][0].unshift(newName);
+            favoriteList[index][0].unshift(newName);
         } else {
-            newFavoriteList[index][0].unshift(oldName);
+            favoriteList[index][0].unshift(oldName);
         }
 
-        res.statusw(200).send(newFavoriteList);
+        res.statusw(200).send(favoriteList);
     },
     send: () => {
-        res.status(200).send(newFavoriteList)
+        // GET DATA
+        res.status(200).send(favoriteList)
     },
     remove: (req, res) => {
+        // DELETE DATA
         const { id } = req.params
-        const index = newFavoriteList.findIndex(el => el.id === +id)
-        newFavoriteList.splice(index, 1)
-        res.status(200).send(newFavoriteList)
+        const index = favoriteList.findIndex(el => el.id === +id)
+        favoriteList.splice(index, 1)
+        res.status(200).send(favoriteList)
     }
 }
