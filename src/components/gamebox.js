@@ -9,17 +9,19 @@ import Studio from './gameBox/studio';
 class Gamebox extends Component {
     constructor(props) {
         super(props)
+
+        this.rendDisplay = this.rendDisplay.bind(this);
     }
 
     rendDisplay() {
-        let results = 
+        console.log(this.props.displayArr)
 
     }
 
     render() {
         return (
             <div className="display">
-
+                {this.rendDisplay()}
             </div>
         )
     }

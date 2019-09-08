@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Search from './components/search'
+import Gamebox from './components/gamebox';
+import Search from './components/search';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,6 @@ class App extends Component {
   searchResults(search) {
     let newResults = axios.get(`/api/games/${search}`).then(res => {
       this.setState({searchResults: res.data})
-      console.log(newResults)
     })
 
     
@@ -30,7 +30,7 @@ class App extends Component {
   return (
     <div className="App">
       <Search searchResults={this.searchResults}/>
-      
+      <Gamebox displayArr={this.state.searchResults} />
       {/* {this.searchResults('Control')}; */}
     </div>
   )
