@@ -54,33 +54,29 @@ class App extends Component {
   renderFavorites() {
     const { favoritesList } = this.state;
     let favArr = favoritesList.map((game, index) => <Favorite removeFavorite={this.removeFavorite} game={game}/>)
-    
-    // return (
-    //   // Map the favorites list with HTML for display
-    //   <list className="favoritesBox">
-    //     {favoritesList.map((game, index) => {
-    //       console.log(typeof game.title)
-    //       return <h1>{game.title} </h1>
-    //     })}
-    //   </list>
-    // )
-
     return favArr;
   }
-
 
   render() {
     return (
       <div className="App">
         <div className="left">
-          <button onClick={() => this.toggleMock()}>Connect to API</button>
-          {this.state.devConnect ? "Connected!" : "Using Test Data"}
+          <header className="heading">
+            <div id="connectStatus">
+            <h1 className="logo reem toggleConnect" onClick={() => this.toggleMock()}>EGREGIOUSly</h1>
+            {this.state.devConnect ? <h3 className="logo reem">Connected!</h3> : <h3 className="logo reem">Tested!</h3>}
+          </div>
           <Search searchResults={this.searchResults} />
+          </header>
           <Gamebox displayArr={this.state.searchResults} addFavorite={this.addFavorite} />
         </div>
         <div className="right">
+        <div id="renderFavorites">
         {this.renderFavorites()}
-        <button onClick={() => this.clearFavorites() }>Clear</button>
+        </div>
+        <div id="clearFavorites">
+        <button className="reem" onClick={() => this.clearFavorites() }>Clear</button>
+        </div>
         </div>
       </div>
     )

@@ -17,9 +17,9 @@ class Search extends Component {
     // Search for Game
     render() {
         return (
-            <div>
-                <input type="text" onChange={(e) => this.handleChange(e.target.value)} />
-                <button onClick={() => this.props.searchResults(this.state.newSearch)}>Submti!</button>
+            <div id="searchBar">
+                <input id="inputSearch" className="reem" type="text" placeholder="Search" onChange={(e) => this.handleChange(e.target.value)} />
+                <button id="submitSearch" className="reem toggleConnect" onClick={() => this.props.searchResults(this.state.newSearch)}>Submit!</button>
             </div>
         )
     }

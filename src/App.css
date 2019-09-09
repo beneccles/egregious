@@ -1,43 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Alef|Allerta+Stencil|Baumans|Black+Han+Sans|Black+Ops+One|Bowlby+One|Candal|Carter+One|Doppio+One|Michroma|Quantico|Reem+Kufi|Rubik+Mono+One|Saira+Condensed|Sarala|Syncopate|Tauri&display=swap');
+
+/* Universals */
+.reem {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+button {
+  border-radius: 20px;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #E5E9E9;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+/* Header */
+.heading {
+  background-color: #253148;
+  height: 10vh;
+  width: 100vw;
+  border: solid 1px green;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
 }
 
+#submitSearch {
+  margin-left: 10px;
+  border: none;
+  font-size: 18px;
+}
+
+.toggleConnect {
+  cursor: pointer;
+}
+
+#connectStatus {
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.logo {
+  margin-left: 30px;
+  line-height: 0px;
+  color: #E5E9E9;
+}
+#searchBar {
+  margin-right: 30px;
+}
+
+#inputSearch {
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+}
 /* Game Box CSS */
 .gamebox {
+  border-radius: 20px;
   height: 20vh;
   width: 50vw;
-  border: solid 1px black;
+  background-color: #306DAA;
+  margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 30px;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
 .left {
-  display: flex;
+  /* display: flex;
 	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: baseline;
-	align-content: stretch;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: flex-start; */
 }
 
 .right {
@@ -46,11 +97,35 @@
   border: solid 1px blue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.favoritesList {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+  align-content: flex-start;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+#renderFavorites{
+  /* display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-start; */
+}
+
+#clearFavorites{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-end;
 }

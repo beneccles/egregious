@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Date from './gameBox/date';
-import Description from './gameBox/description';
 import Name from './gameBox/name';
 import Platform from './gameBox/platform';
 import Screenshots from './gameBox/screenshots';
 import Studio from './gameBox/studio';
-import Favorite from './favorite';
 
 class Gamebox extends Component {
     constructor(props) {
@@ -22,7 +20,6 @@ class Gamebox extends Component {
             return (
                 <div key={index + game.title} className="gamebox">
                     <Name index={index + game.title} title={game.title} />
-                    {/* <Studio index={index + game.studio} studio={game.studio} /> */}
                     <Date index={index + game.date} date={game.date} />
                     {/* <Platform index={index} platforms={game.platforms} /> */}
                     <button onClick={() => this.props.addFavorite(game)}>Add to Favorites</button>
@@ -33,7 +30,7 @@ class Gamebox extends Component {
     render() {
         return (
             <div className="display">
-                {this.props.displayArr.length > 0 ? this.displaySearchResults(this.props.displayArr) : "Loading"}
+                {this.props.displayArr.length > 0 ? this.displaySearchResults(this.props.displayArr) : console.log("Loading")}
             </div>
         )
     }

@@ -9,9 +9,9 @@ class Favorite extends Component {
         const {title, id} = this.props.game;
 
         return (
-            <div>
-                <h1>{title}</h1>
-                <button onClick={() => this.props.removeFavorite(id)}>Remove</button>
+            <div className="favoritesList">
+                <li>{title}</li>
+                <button className="reem" onClick={() => this.props.removeFavorite(id)}>Remove</button>
             </div>
         )
     }
