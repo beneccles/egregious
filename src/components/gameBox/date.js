@@ -8,7 +8,7 @@ class Date extends Component {
     render() {
         return (
             <div className="date">
-                <p className="releaseDate">{this.props.date}</p>
+                <p className="releaseDate gameBoxText">{this.props.date}</p>
             </div>
         )
     }

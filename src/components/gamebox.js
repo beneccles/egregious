@@ -17,12 +17,15 @@ class Gamebox extends Component {
     displaySearchResults(results) {
         // For each game, access the information
         return results.map((game, index) => {
+            console.log(game.backgroundImage);
             return (
-                <div key={index + game.title} className="gamebox">
+                <div style={{backgroundImage:`url(${game.backgroundImage})`}} key={index + game.title} className="gamebox">
+                    <div className="infoBox gameColor">
                     <Name index={index + game.title} title={game.title} />
-                    <Date index={index + game.date} date={game.date} />
+                    <Date index={index + game.date} date={game.date} url={game.backgroundImage}/>
                     {/* <Platform index={index} platforms={game.platforms} /> */}
-                    <button onClick={() => this.props.addFavorite(game)}>Add to Favorites</button>
+                    <button className="addFavButton" onClick={() => this.props.addFavorite(game)}>Add Favorite</button>
+                    </div>
                 </div>)
         })
     }
@@ -30,7 +33,9 @@ class Gamebox extends Component {
     render() {
         return (
             <div className="display">
-                {this.props.displayArr.length > 0 ? this.displaySearchResults(this.props.displayArr) : console.log("Loading")}
+                {this.props.isLoading ?  <h2 className="loading"><i className="fa fa-spinner fa-spin loading"></i>Loading</h2>:
+                this.displaySearchResults(this.props.displayArr)
+                }
             </div>
         )
     }

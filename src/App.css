@@ -1,16 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Alef|Allerta+Stencil|Baumans|Black+Han+Sans|Black+Ops+One|Bowlby+One|Candal|Carter+One|Doppio+One|Michroma|Quantico|Reem+Kufi|Rubik+Mono+One|Saira+Condensed|Sarala|Syncopate|Tauri&display=swap');
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 /* Universals */
+body {
+  background-color: #E5E9E9;
+}
 .reem {
   font-family: 'Reem Kufi', sans-serif;
 }
 
 button {
   border-radius: 20px;
+  background-color: #76B1E1;
+  color: #253148;
+  border: none;
+  
+}
+
+.gameColor {
+  font-family: 'Reem Kufi', sans-serif;
+  line-height: 0px;
 }
 
 .App {
   background-color: #E5E9E9;
+  width: 100vw;
   display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -24,7 +37,6 @@ button {
   background-color: #253148;
   height: 10vh;
   width: 100vw;
-  border: solid 1px green;
   display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -68,16 +80,59 @@ button {
 /* Game Box CSS */
 .gamebox {
   border-radius: 20px;
-  height: 20vh;
-  width: 50vw;
-  background-color: #306DAA;
+  height: auto;
+  width: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 30px;
+  background-size: auto;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: flex-start;
+}
+
+.gameBoxText {
+  color: #253148;
+}
+
+.favButtonRemove {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.addFavButton {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.clearAllFavorites {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.loading {
+  color: #253148;
   display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+
+.infoBox {
+  border-radius: 25px;
+  height: 100%;
+  width: 40%;
+  background-color: #306DAA;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	align-items: center;
 	align-content: center;
 }
@@ -94,7 +149,6 @@ button {
 .right {
   height: 20vh;
   width: 50vw;
-  border: solid 1px blue;
 }
 
 .favoritesList {
@@ -108,6 +162,12 @@ button {
   margin-bottom: 10px;
 }
 
+/* Sprite Animate Test */
+/* Tutortial from https://medium.com/dailyjs/how-to-build-a-simple-sprite-animation-in-javascript-b764644244aa */
+#image {
+  height: 256px;
+  width: 256px;
+}
 li {
   list-style-type: none;
 }

@@ -11,7 +11,7 @@ class Favorite extends Component {
         return (
             <div className="favoritesList">
                 <li>{title}</li>
-                <button className="reem" onClick={() => this.props.removeFavorite(id)}>Remove</button>
+                <button className="reem favButtonRemove" onClick={() => this.props.removeFavorite(id)}>Remove</button>
             </div>
         )
     }

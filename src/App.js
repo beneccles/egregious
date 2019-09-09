@@ -12,7 +12,8 @@ class App extends Component {
       searchResults: [],
       favoritesList: [],
       newSearch: "",
-      devConnect: true
+      devConnect: true,
+      loadingAPI: false
     }
 
     this.searchResults = this.searchResults.bind(this);
@@ -22,8 +23,15 @@ class App extends Component {
 
   // Call the Server, and ask it to call RAWG for the data
   searchResults(search) {
+    this.setState({ loadingAPI: true })
     axios.get(`/api/games/${search}`).then(res => {
-      this.setState({ searchResults: res.data })
+      this.setState({ searchResults: res.data, loadingAPI: false })
+    })
+  }
+
+  deleteResults() {
+    axios.delete(`/api/games/`).then(res => {
+      this.setState({ searchResults: []})
     })
   }
 
@@ -41,7 +49,7 @@ class App extends Component {
 
   toggleMock() {
     axios.put('/api/games/connected').then(res => {
-      this.setState({devConnect: res.data})
+      this.setState({ devConnect: res.data })
     })
   }
 
@@ -53,7 +61,7 @@ class App extends Component {
 
   renderFavorites() {
     const { favoritesList } = this.state;
-    let favArr = favoritesList.map((game, index) => <Favorite removeFavorite={this.removeFavorite} game={game}/>)
+    let favArr = favoritesList.map((game, index) => <Favorite removeFavorite={this.removeFavorite} game={game} />)
     return favArr;
   }
 
@@ -63,20 +71,22 @@ class App extends Component {
         <div className="left">
           <header className="heading">
             <div id="connectStatus">
-            <h1 className="logo reem toggleConnect" onClick={() => this.toggleMock()}>EGREGIOUSly</h1>
-            {this.state.devConnect ? <h3 className="logo reem">Connected!</h3> : <h3 className="logo reem">Tested!</h3>}
-          </div>
-          <Search searchResults={this.searchResults} />
+              <h1 className="logo reem toggleConnect" onClick={() => this.toggleMock()}>EGREGIOUSly</h1>
+              {this.state.devConnect ? <h3 className="logo reem">Connected!</h3> : <h3 className="logo reem">Tested!</h3>}
+            </div>
+            <Search searchResults={this.searchResults} />
           </header>
-          <Gamebox displayArr={this.state.searchResults} addFavorite={this.addFavorite} />
+          <Gamebox isLoading={this.state.loadingAPI} displayArr={this.state.searchResults} addFavorite={this.addFavorite} />
         </div>
         <div className="right">
-        <div id="renderFavorites">
-        {this.renderFavorites()}
-        </div>
-        <div id="clearFavorites">
-        <button className="reem" onClick={() => this.clearFavorites() }>Clear</button>
-        </div>
+          <div id="renderFavorites">
+            {this.renderFavorites()}
+          </div>
+          
+          {this.state.loadingAPI === false ? <div id="clearFavorites">
+            <button className="reem clearAllFavorites" onClick={() => this.clearFavorites()}>Clear</button>
+            <button className="reem clearAllFavorites" onClick={() => this.deleteResults()}>Clear Results</button>
+          </div> : <div></div>}
         </div>
       </div>
     )

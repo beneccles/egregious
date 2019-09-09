@@ -7,7 +7,7 @@ class Name extends Component {
 
     render() {
         return (
-            <h1 key={this.props.index} className="title">{this.props.title}</h1>
+            <h1 key={this.props.index} className="title gameBoxText">{this.props.title}</h1>
         )
     }
 }
