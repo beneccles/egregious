@@ -63,11 +63,13 @@ button {
 	align-items: center;
 	align-content: center;
 }
+
 .logo {
   margin-left: 30px;
   line-height: 0px;
   color: #E5E9E9;
 }
+
 #searchBar {
   margin-right: 30px;
 }
@@ -77,6 +79,7 @@ button {
   border: none;
   border-radius: 20px;
 }
+
 /* Game Box CSS */
 .gamebox {
   border-radius: 20px;
@@ -123,7 +126,6 @@ button {
 	align-content: center;
 }
 
-
 .infoBox {
   border-radius: 25px;
   height: 100%;
@@ -135,15 +137,6 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	align-content: center;
-}
-
-.left {
-  /* display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: flex-start; */
 }
 
 .right {
@@ -162,23 +155,8 @@ button {
   margin-bottom: 10px;
 }
 
-/* Sprite Animate Test */
-/* Tutortial from https://medium.com/dailyjs/how-to-build-a-simple-sprite-animation-in-javascript-b764644244aa */
-#image {
-  height: 256px;
-  width: 256px;
-}
 li {
   list-style-type: none;
-}
-
-#renderFavorites{
-  /* display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	align-content: flex-start; */
 }
 
 #clearFavorites{
