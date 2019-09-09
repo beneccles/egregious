@@ -13,6 +13,8 @@ app.use(express.json())
 //recieveCTRL
 // GET to recieveCTRL.recieveSearchResult
 app.get('/api/games/:search', recieveCtrl.getResults)
+// PUT to update Dev State
+app.put('/api/games/connected', recieveCtrl.connected)
 // DELETE to recieveCTRL.removeResults
 app.delete('/api/games', recieveCtrl.deleteResults)
 

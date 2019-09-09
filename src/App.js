@@ -12,6 +12,7 @@ class App extends Component {
       searchResults: [],
       favoritesList: [],
       newSearch: "",
+      devConnect: true
     }
 
     this.searchResults = this.searchResults.bind(this);
@@ -35,6 +36,12 @@ class App extends Component {
   removeFavorite(id) {
     axios.put(`/api/games/favorite/${id}`).then(res => {
       this.setState({ favoritesList: res.data })
+    })
+  }
+
+  toggleMock() {
+    axios.put('/api/games/connected').then(res => {
+      this.setState({devConnect: res.data})
     })
   }
 
@@ -66,6 +73,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="left">
+          <button onClick={() => this.toggleMock()}>Connect to API</button>
+          {this.state.devConnect ? "Connected!" : "Using Test Data"}
           <Search searchResults={this.searchResults} />
           <Gamebox displayArr={this.state.searchResults} addFavorite={this.addFavorite} />
         </div>

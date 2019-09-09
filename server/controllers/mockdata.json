@@ -1,4 +1,4 @@
-{
+{"data": {
     "count": 956,
     "next": "https://api.rawg.io/api/games?page=2&page_size=10&search=halo-reach",
     "previous": null,
@@ -1573,4 +1573,4 @@
             ]
         }
     ]
-}
+}}
