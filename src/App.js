@@ -71,7 +71,7 @@ class App extends Component {
         <div className="left">
           <header className="heading">
             <div id="connectStatus">
-              <h1 className="logo reem toggleConnect" onClick={() => this.toggleMock()}>EGREGIOUSly</h1>
+              <h1 className="logo reem toggleConnect" onClick={() => this.toggleMock()}>EGREGIOUS GAMES</h1>
               {this.state.devConnect ? <h3 className="logo reem">Connected!</h3> : <h3 className="logo reem">Tested!</h3>}
             </div>
             <Search searchResults={this.searchResults} />
@@ -83,7 +83,7 @@ class App extends Component {
             {this.renderFavorites()}
           </div>
           
-          {this.state.loadingAPI === false ? <div id="clearFavorites">
+          {this.state.loadingAPI === true ? <div id="clearFavorites">
             <button className="reem clearAllFavorites" onClick={() => this.clearFavorites()}>Clear</button>
             <button className="reem clearAllFavorites" onClick={() => this.deleteResults()}>Clear Results</button>
           </div> : <div></div>}
