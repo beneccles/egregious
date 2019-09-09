@@ -5,7 +5,6 @@ const recieveCtrl = require("./recieveCTRL")
 module.exports = {
     add: (req, res) => {
         // POST DATA
-        console.log("BODY",req.body)
         favoriteList.push(req.body);
         res.status(200).send(favoriteList);
     },
