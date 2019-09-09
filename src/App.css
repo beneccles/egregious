@@ -40,6 +40,12 @@
 	align-content: stretch;
 }
 
+.right {
+  height: 20vh;
+  width: 50vw;
+  border: solid 1px blue;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

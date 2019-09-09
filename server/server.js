@@ -21,10 +21,10 @@ app.delete('/api/games', recieveCtrl.deleteResults)
 app.get('/api/games/favorite', gameCtrl.send)
 // POST to gameCTRL.addToFavorites
 app.post('/api/games/favorite/', gameCtrl.add)
-// PUT to gameCTRL.updateName
-app.put('/api/games/favorite/:name', gameCtrl.rename)
+// PUT to gameCTRL.remove
+app.put('/api/games/favorite/:id', gameCtrl.removeSingle)
 // DELETE to gameCTRL.removeFavorite
-app.delete('/api/games/favorite/delete', gameCtrl.remove)
+app.delete('/api/games/favorite', gameCtrl.remove)
 
 
 //recommendCTRL.js

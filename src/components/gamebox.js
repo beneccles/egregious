@@ -25,7 +25,7 @@ class Gamebox extends Component {
                     {/* <Studio index={index + game.studio} studio={game.studio} /> */}
                     <Date index={index + game.date} date={game.date} />
                     {/* <Platform index={index} platforms={game.platforms} /> */}
-                    <Favorite game={game} addFavorite={this.props.addFavorite}/>
+                    <button onClick={() => this.props.addFavorite(game)}>Add to Favorites</button>
                 </div>)
         })
     }

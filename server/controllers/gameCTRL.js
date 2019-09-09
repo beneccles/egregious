@@ -1,28 +1,23 @@
 const collections = [];
-const favoriteList = [];
+let favoriteList = [];
 const recieveCtrl = require("./recieveCTRL")
 
 module.exports = {
     add: (req, res) => {
         // POST DATA
+        console.log("BODY",req.body)
         favoriteList.push(req.body);
         res.status(200).send(favoriteList);
     },
-    rename: (req, res) => {
-        //Rename favorites list
+    removeSingle: (req, res) => {
+        // Remove a single item and update
         // PUT DATA
-        const { id } = req.params
-        const { newName } = req.body
-        const index = favoriteList.findIndex(el => el.id === +id)
-        const oldName = favoriteList[index].shift()
+        const {id} = req.params;
 
-        if (newName) {
-            favoriteList[index][0].unshift(newName);
-        } else {
-            favoriteList[index][0].unshift(oldName);
-        }
-
-        res.statusw(200).send(favoriteList);
+        // Find the game id in the array, then compare against id.
+        const index = favoriteList.findIndex(game => game.id === +id)
+        favoriteList.splice(index, 1)
+        res.status(200).send(favoriteList);
     },
     send: () => {
         // GET DATA
@@ -30,9 +25,7 @@ module.exports = {
     },
     remove: (req, res) => {
         // DELETE DATA
-        const { id } = req.params
-        const index = favoriteList.findIndex(el => el.id === +id)
-        favoriteList.splice(index, 1)
+        favoriteList = [];
         res.status(200).send(favoriteList)
     }
 }
