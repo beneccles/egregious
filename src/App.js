@@ -83,10 +83,10 @@ class App extends Component {
             {this.renderFavorites()}
           </div>
           
-          {this.state.loadingAPI === true ? <div id="clearFavorites">
+          <div id="clearFavorites">
             <button className="reem clearAllFavorites" onClick={() => this.clearFavorites()}>Clear</button>
             <button className="reem clearAllFavorites" onClick={() => this.deleteResults()}>Clear Results</button>
-          </div> : <div></div>}
+          </div>
         </div>
       </div>
     )
